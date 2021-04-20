@@ -1,0 +1,34 @@
+<div class="gris ">
+    <div class="container">
+      
+      <mat-card>
+
+<div class="credit-card row">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>Total a pagar: {{this.servicio.cash}} <i class="fas fa-euro-sign"></i></h2>
+        </div>
+
+
+    <div class="col-sm-3">
+    
+        <div #cardInfo class="form-control">
+    
+        </div>
+        <div class="error col-sm" >
+            {{ this.cardError }}
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4"></div>
+
+    <button mat-raised-button color="primary" type="submit" class="col-sm-3 margenTop" (click)="onClick()">Pagar </button>
+</div>
+</div>
+
+</mat-card>
+
+</div>
+</div>

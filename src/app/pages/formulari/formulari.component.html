@@ -1,0 +1,508 @@
+<form [formGroup]="usuario" (ngSubmit)="validar()">
+
+<div class="gris">
+  <div class="container">
+    
+    <mat-card>
+
+        <h2>Les meues dades</h2>
+
+        <div class="row">
+
+            <div class="col-sm">
+                <mat-form-field appearance="fill" class="input">
+                    <mat-label>NIA</mat-label>
+                    <input formControlName="nia" matInput>
+                </mat-form-field>
+                </div>
+
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>DNI</mat-label>
+                <input formControlName="dni" matInput>
+            </mat-form-field>
+            </div>
+          
+        </div>
+
+
+        <div class="row">
+        <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Nom</mat-label>
+                <input formControlName="nom" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Primer apellido</mat-label>
+                <input formControlName="primer" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Segon apellido</mat-label>
+                <input formControlName="segon" matInput>
+            </mat-form-field>
+        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>País</mat-label>
+                <input formControlName="pais" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Província</mat-label>
+                <input formControlName="provincia" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Localitat</mat-label>
+                <input formControlName="localitat" matInput>
+            </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Domicili</mat-label>
+                <input formControlName="domicili" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Codi postal</mat-label>
+                <input formControlName="postal" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="fill" class="input">
+                    <mat-label>Génere</mat-label>
+                    <mat-select formControlName="genero">
+                    <mat-option *ngFor="let genere of generes" [value]="genere.value">
+                        {{genere.viewValue}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+        </div>
+
+       
+
+        <div class="row">
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Nacionalitat</mat-label>
+                <input formControlName="nacionalitat" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Província de naiximent</mat-label>
+                <input formControlName="naiximent" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Localitat del DNI</mat-label>
+                <input formControlName="localitatnaix" matInput>
+            </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Correu electrònic</mat-label>
+                <input formControlName="correu" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>Número de telèfon</mat-label>
+                <input formControlName="tel" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm">
+                <mat-form-field appearance="fill" class="input">    
+                    <mat-label>Data de naixement</mat-label>
+                    <input formControlName="data" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </mat-card>
+
+    
+    <mat-card  class="margenTop animate__animated animate__fadeInDown" *ngIf="(this.usuario.value.edad<18) && (this.usuario.value.edad>=0)" >
+
+    <h2>Primer tutor del menor</h2>
+
+    <div formGroupName="tutor1">
+    <div class="row">
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Nom</mat-label>
+            <input formControlName="nomTutor" matInput>
+        </mat-form-field>
+        </div>
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Cognoms</mat-label>
+            <input formControlName="primerTutor" matInput>
+        </mat-form-field>
+        </div>
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>DNI</mat-label>
+            <input formControlName="dniTutor" matInput>
+        </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Correu electrònic</mat-label>
+            <input formControlName="correuTutor" matInput>
+        </mat-form-field>
+        </div>
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Número de telèfon</mat-label>
+            <input formControlName="telTutor" matInput>
+        </mat-form-field>
+        </div>
+     
+    </div>
+</div>
+    <h2>Segón tutor del menor(Opcional)</h2>
+    <div formGroupName="tutor2">
+
+    <div class="row">
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Nom</mat-label>
+            <input formControlName="nomTutor" matInput>
+        </mat-form-field>
+        </div>
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Cognoms</mat-label>
+            <input formControlName="primerTutor" matInput>
+        </mat-form-field>
+        </div>
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>DNI</mat-label>
+            <input formControlName="dniTutor" matInput>
+        </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Correu electrònic</mat-label>
+            <input formControlName="correuTutor" matInput>
+        </mat-form-field>
+        </div>
+        <div class="col-sm">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Número de telèfon</mat-label>
+            <input formControlName="telTutor" matInput>
+        </mat-form-field>
+        </div>
+     
+    </div>
+    </div>
+</mat-card>
+
+<mat-card class="margenTop">
+
+    <h2>Familiars a l'AMPA</h2>
+
+    <div class="row">
+            <div class="col-sm-3 bajar">
+            <mat-radio-group aria-label="Select an option" formControlName="germans">
+                ¿Germans?
+                <mat-radio-button value="1"class="izquierda1">Sí</mat-radio-button>
+                <mat-radio-button value="2" class="izquierda1">No</mat-radio-button>
+              </mat-radio-group>
+        </div>
+
+        <div class="col-sm animate__animated animate__fadeInRight" *ngIf="this.usuario.value.germans == 1">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>NIA del germà</mat-label>
+                <input formControlName="niaGerma" matInput>
+            </mat-form-field>
+            </div>
+            <div class="col-sm animate__animated animate__fadeInRight" *ngIf="this.usuario.value.germans == 1">
+            <mat-form-field appearance="fill" class="input">
+                <mat-label>DNI del germà</mat-label>
+                <input formControlName="dniGerma" matInput>
+            </mat-form-field>
+            </div>
+         
+      </div>
+
+</mat-card>
+
+    <mat-card class="margenTop">
+
+        <h2>Estudis del curs anterior</h2>
+
+        <div class="row">
+            <div class="col-sm">
+              <mat-form-field appearance="fill" class="input">
+                  <mat-label>Centre de procedència</mat-label>
+                  <input formControlName="procedencia" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-sm">
+              <mat-form-field appearance="fill" class="input">
+                  <mat-label>Curs realitzar</mat-label>
+                  <input formControlName="curspro" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-sm bajar">
+                <mat-radio-group aria-label="Select an option" formControlName="repetidor">
+                    ¿Repetidor?
+                    <mat-radio-button value="1"class="izquierda1">Sí</mat-radio-button>
+                    <mat-radio-button value="2" class="izquierda1">No</mat-radio-button>
+                  </mat-radio-group>
+            </div>
+          </div>
+
+
+
+    </mat-card> 
+    <div class="row anchura98">
+    <mat-card class="margenTop col-sm">
+
+        <h2>Estudis del curs actual</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group" formControlName="nivell">
+            <mat-radio-button  class="example-radio-button" *ngFor="let nivell of nivells" [value]="nivell">
+                {{nivell}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='ESO'">
+
+        <h2>Selecciona un nivell</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
+            <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos" [value]="curs">
+                {{curs}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='BATXILLERAT'">
+
+        <h2>Selecciona un nivell</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
+            <mat-radio-button class="example-radio-button" *ngFor="let curs of modalitats" [value]="curs">
+                {{curs}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='CFGM'">
+
+        <h2>Selecciona un nivell</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
+            <mat-radio-button class="example-radio-button" *ngFor="let curs of cicles1" [value]="curs">
+                {{curs}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='CFGS'">
+
+        <h2>Selecciona un nivell</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
+            <mat-radio-button class="example-radio-button" *ngFor="let curs of cicles2" [value]="curs">
+                {{curs}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='FP BÀSICA'">
+
+        <h2>Selecciona un nivell</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group">
+            <mat-radio-button class="example-radio-button" *ngFor="let curs of FPBasica" [value]="curs">
+                {{curs}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='FP BÀSICA 2a oportunitat'">
+
+        <h2>Selecciona un nivell</h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group">
+            <mat-radio-button class="example-radio-button" *ngFor="let curs of FPBasica2" [value]="curs">
+                {{curs}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+  
+    <mat-card class="margenTop row margen5">
+        
+        <h2>Adjunta el DNI y SIP </h2>
+        
+        <div class="col-md-12">
+             
+                <div class="form-group files">
+                    <label for="formFileMultiple" class="form-label"></label>
+                    <div class = "cuadro"> 
+                        <input type="file" class="form-control oculto" id="formFileMultiple"  (change)="onFileSelected($event)" formControlName="images" multiple> 
+                    </div>
+
+                </div>
+                <div class="row margenTop">
+                   
+                    <div class="col-12 margenTop2 row" *ngFor="let file of files;let indice=index">
+                    <div class="col-11 animate__animated animate__fadeInDown">
+                        <img *ngIf="imageUrl[indice]" class="imatgePre" [src]="imageUrl[indice]" />
+                        {{file.name}}
+                    </div>
+                        <div  class="col-1 animate__animated animate__fadeInDown">
+                            <button mat-mini-fab color="warn" (click)="eliminar(indice)"> <i class="fas fa-trash"></i> </button>
+                        </div>
+
+                   </div>
+               </div>
+            
+            
+        </div>
+
+    </mat-card>
+
+    </div>
+    <mat-card class="margenTop">
+
+            <mat-checkbox class="marg" formControlName="auth0"> 
+                <span class="wrap-mat-radio-label text marg">
+                    (1) Em done per assabentat/-da que està prohibit que l’alumnat porte i use qualsevol 
+                    tipus d’aparell electrònic i/o de telefonia mòbil a l’institut i que l’ús indegut de les T.I.C. pot comportar la denúncia corresponent 
+                    a més del que estableix el RRI del centre. La primera mesura correctora serà la retirada de telèfons mòbils, aparells de so i altres 
+                    aparells electrònics aliens al procés d’ensenyança / aprenentatge. Es retiraran apagats, i seran tornats als pares, mares, tutors o 
+                    tutores legals en presència de l’alumne o de l’alumna quan ho dispose el centre. (2) Done la meua autorització perquè les dades 
+                    d’aquest/-a alumne/-a es posen a disposició de les famílies o representants legals mitjançant l’aplicació Web-Família de la plataforma 
+                    telemàtica Ítaca de la Conselleria d’Educació de la Generalitat Valenciana. (3) Faig constar que he llegit i entenc les normes 
+                    presentades en el Reglament Intern de Centre IES JAUME I, per la qual cosa accepte de conformitat complir amb el que s’estableix en 
+                    aquest, així com el procediments, instruccions i acords <strong>(4) Done la meua autorització perquè l’alumne/-a del/de la qual sóc responsable
+                     participe en les activitats escolars i extraescolars del curs que es realitzaran a la ciutat d’Ontinyent.
+                    </strong>  </span>
+            </mat-checkbox>
+           
+
+    </mat-card>
+   
+
+    <mat-card class="margenTop">
+
+        <mat-checkbox class="marg" > 
+            <span class="wrap-mat-radio-label text marg">
+                Autoritze que el meu fill/filla isca de l’institut a l’hora de música i/o optativa 
+                (perquè té l’assignatura convalidada), i em faig responsable de qualsevol tipus de lesió 
+                i danys que pogueren ocórrer fora del centre, tant en la persona del meu fill/a, com en 
+                terceres persones. A més a més allibere de qualsevol responsabilitat a l’institut i em 
+                compromet d’assumir dita responsabilitat.   
+            </span>
+        </mat-checkbox>
+
+    </mat-card>
+
+    <mat-card class="margenTop">
+
+        <mat-checkbox class="marg"> 
+            <span class="wrap-mat-radio-label text marg">
+                Amb la inclusió de les noves tecnologies dins de les comunicacions, publicacions i accions comercials que 
+                pot realitzar l'IES Jaume I, i la possibilitat que en estes puguen aparèixer imatges vostres durant la 
+                realització de les seves activitats. I com que el dret a la pròpia imatge està reconegut a l'article 18.1 de 
+                la Constitució i regulat per la Llei 1/1982, de 5 de maig, sobre el dret a l'honor, a la intimitat personal i 
+                familiar i a la pròpia imatge i el Reglament (UE) 2016/679 del Parlament Europeu i del Consell, de 27 d'abril 
+                de 2016, relatiu a la protecció de les persones físiques pel que fa al tractament de dades personals i a la 
+                lliure circulació d'aquestes dades, l'IES Jaume I vos demana el consentiment per poder publicar les imatges 
+                en les quals aparegueu individualment o en grup que se us puguen realitzar en les activitats del centre. 
+                Autoritze a l'IES Jaume I a un ús pedagògic / promocional de les imatges i filmacions realitzades en 
+                activitats escolar lectives, complementàries i/o extraescolars organitzades pel propi centre a publicar-les 
+                en la pàgina web, perfils en xarxes socials de l’institut i en la premsa local.
+            </span>
+        </mat-checkbox>
+
+    </mat-card>
+
+    <mat-card class="margenTop">
+        <div class="row">
+
+       <div class="col-sm-9">
+           <button mat-raised-button color="warn" type="reset">Borrar les dades <i class="fas fa-redo" (click)="reset()"></i></button>
+       </div> 
+
+       <div class="col-sm-3">
+           <button mat-raised-button color="primary" type="submit" [disabled]="usuario.invalid">Continuar <i class="fas fa-arrow-right"></i></button>
+       </div>
+        </div>
+    </mat-card>
+
+
+    <mat-card class="margenTop row">
+
+
+    </mat-card>
+
+
+
+  </div>
+</div>
+</form>
