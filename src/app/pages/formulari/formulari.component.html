@@ -450,7 +450,7 @@
 
     <mat-card class="margenTop">
 
-        <mat-checkbox class="marg" > 
+        <mat-checkbox class="marg" formControlName="auth1"> 
             <span class="wrap-mat-radio-label text marg">
                 Autoritze que el meu fill/filla isca de l’institut a l’hora de música i/o optativa 
                 (perquè té l’assignatura convalidada), i em faig responsable de qualsevol tipus de lesió 
@@ -464,8 +464,8 @@
 
     <mat-card class="margenTop">
 
-        <mat-checkbox class="marg"> 
-            <span class="wrap-mat-radio-label text marg">
+        <mat-checkbox class="marg" formControlName="auth2"> 
+            <span class="wrap-mat-radio-label text marg" >
                 Amb la inclusió de les noves tecnologies dins de les comunicacions, publicacions i accions comercials que 
                 pot realitzar l'IES Jaume I, i la possibilitat que en estes puguen aparèixer imatges vostres durant la 
                 realització de les seves activitats. I com que el dret a la pròpia imatge està reconegut a l'article 18.1 de 
@@ -490,7 +490,7 @@
        </div> 
 
        <div class="col-sm-3">
-           <button mat-raised-button color="primary" type="submit" [disabled]="usuario.invalid">Continuar <i class="fas fa-arrow-right"></i></button>
+           <button mat-raised-button color="primary" type="submit" [disabled]="usuario.invalid || (files.length < 2)">Continuar <i class="fas fa-arrow-right"></i></button>
        </div>
         </div>
     </mat-card>

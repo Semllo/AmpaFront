@@ -194,22 +194,16 @@ export class FormulariComponent implements OnInit {
   ///////////////////////////////////////
   onFileSelected(event: any) {
 
-    //let reader = new FileReader();
-    // this.usuario.value.images = event.target.files;
-
-    let formData:FormData = new FormData();
-
-    formData = event.target.files[0];
-    //console.log(formData);
-
     if( event.target.files.length > 0) {
     
       for(let i = 0; i < event.target.files.length; i++ ) {
         let reader = new FileReader();
+
         if (this.files.length >= 3 )
-          return;
+          continue;
+
         if(this.files.includes(event.target.files[i]))
-        return;    
+        continue;    
         this.files.push(event.target.files[i]);
         reader.readAsDataURL(event.target.files[i]);
         reader.onload = () => {
@@ -228,7 +222,6 @@ export class FormulariComponent implements OnInit {
 
     this.files.splice(indice, 1);
     this.imageUrl.splice(indice, 1);
-    this.usuario.value.images.splice(indice, 1);
    
   }
 
