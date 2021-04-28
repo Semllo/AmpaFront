@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { AlumService } from 'src/app/servicis/alum.service';
+import {Router} from '@angular/router';
 
 import Swal from 'sweetalert2'
 
@@ -25,7 +26,9 @@ ngAfterViewInit(): void {
 }
 
   constructor(private ngZone: NgZone,
-    public servicio: AlumService,) { }
+    public servicio: AlumService, 
+     private route:Router,
+    ) { }
 
   ngOnInit(): void {
 
@@ -57,7 +60,10 @@ if(error){
         title: 'El teu usuari ha sigut registrat, a continuació rebràs un correu electrònic amb el resguard de la matrícula.',
         showConfirmButton: true,
         confirmButtonText: `D'acord`
-      })
+      }).then(() => {
+        window.location.href = 'https://ampaiesjaumeprimer.es';
+      });
+     
       }else{
         this.ngZone.run(()=> this.cardError = error.message);
       }
@@ -68,7 +74,9 @@ if(error){
         title: `${error.error.msg}`,
         showConfirmButton: true,
         confirmButtonText: `D'acord`
-      })
+      }).then(() => {
+        window.location.href = 'https://ampaiesjaumeprimer.es';
+      });
     } 
     
   }

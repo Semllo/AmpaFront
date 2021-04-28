@@ -4,7 +4,7 @@ import { AlumService } from 'src/app/servicis/alum.service';
 import { ValidacionesComponent } from 'src/app/validaciones/validaciones/validaciones.component';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { DomSanitizer} from '@angular/platform-browser';
 
 
 
@@ -157,7 +157,10 @@ export class FormulariComponent implements OnInit {
   ///////////////////////////////////////
   validar() {
     
+    this.usuario.value.images = this.imageUrl;
+
     console.log( this.usuario.value);
+
     this.servicio.alumn = this.usuario.value;
 
     this.servicio.GetForm(this.usuario).subscribe(data => {
@@ -236,7 +239,6 @@ export class FormulariComponent implements OnInit {
       }
     }
 
-    this.usuario.value.images = this.imageUrl;
     //console.log(this.usuario.value.images);
 }
 

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'formulari', component: FormulariComponent, data: { titulo: ' Matricula ' }},
   { path: 'pagar', component: PagarComponent, data: { titulo: ' Métode de pagament ' }},
   { path: 'inici', component: IniciComponent, data: { titulo: ' Benvingut ' }},
-  { path: '**', component: NopagefoundComponent },
+  { path: '**', redirectTo: '/inici', pathMatch: 'full'  },
 ];
 
 @NgModule({
