@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
 })
 export class PagarComponent implements OnInit, AfterViewInit {
 
+  loader = false;
 
   @ViewChild('cardInfo') cardInfo!: ElementRef;
   cardError: string | undefined = '';
@@ -42,28 +43,39 @@ if(error){
 
 }
 
-async onClick(){
-
-  const { token, error } = await stripe.createToken(this.card);
-  if(token){
-   const respone = await this.servicio.charge(this.servicio.cash, token.id);
-   if( respone.amount >= 1000)
-   this.servicio.PostForm(this.servicio.alumn);
-   console.log(respone);
-
-   Swal.fire({
-    icon: 'success',
-    title: 'El teu usuari ha sigut registrat, a continuació rebràs un correu electrònic amb el resguard de la matrícula.',
-    showConfirmButton: true,
-    confirmButtonText: `D'acord`
-
-  })
-
-  }else{
-    this.ngZone.run(()=> this.cardError = error.message);
+  async onClick(){
+    this.loader = true;
+    const { token, error } = await stripe.createToken(this.card);
+    if(token){
+    try {
+      const respone = await this.servicio.charge(this.servicio.cash, token.id);
+      if( respone.ok == true){
+        this.servicio.PostForm(this.servicio.alumn);
+        console.log(respone);
+    
+        Swal.fire({
+        icon: 'success',
+        title: 'El teu usuari ha sigut registrat, a continuació rebràs un correu electrònic amb el resguard de la matrícula.',
+        showConfirmButton: true,
+        confirmButtonText: `D'acord`
+      })
+      }else{
+        this.ngZone.run(()=> this.cardError = error.message);
+      }
+      
+    } catch(error) {
+      Swal.fire({
+        icon: 'error',
+        title: `${error.error.msg}`,
+        showConfirmButton: true,
+        confirmButtonText: `D'acord`
+      })
+    } 
+    
   }
 
-}
+  this.loader = false;
 
+  }
 
 }

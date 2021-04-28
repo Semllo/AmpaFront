@@ -37,7 +37,7 @@
   }
 
   .margenTop {
-      margin-top: 3%;
+      margin-top: 2%;
   }
   .margenTop2 {
     margin-top: 2%;
@@ -50,8 +50,12 @@
   }
 
   .margen5 {
-      margin-left: 0.8%;
+      margin-left: 0.9%;
   }
+
+  .margen4 {
+    margin-left: 0.1%;
+}
 
   .alturaanchMAX {
       width: 100%;
@@ -127,4 +131,10 @@
 
 ::ng-deep .mat-checkbox-inner-container{
     margin-top: 5px !important;
+}
+
+.margenbot {
+    margin-bottom: 10px;
+    margin-block-end: 10%;
+    padding-bottom: 5%;
 }

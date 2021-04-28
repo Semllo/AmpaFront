@@ -27,6 +27,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AlumService } from './servicis/alum.service';
 import { PagarComponent } from './pages/pagar/pagar.component';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 
@@ -60,7 +62,8 @@ import { PagarComponent } from './pages/pagar/pagar.component';
     FormsModule,
     ReactiveFormsModule, 
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [ {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
   AlumService],

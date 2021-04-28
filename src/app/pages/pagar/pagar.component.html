@@ -25,6 +25,8 @@
     <div class="col-sm-4"></div>
 
     <button mat-raised-button color="primary" type="submit" class="col-sm-3 margenTop" (click)="onClick()">Pagar </button>
+    <mat-spinner *ngIf="loader" [diameter]="40" class="loader"></mat-spinner>
+
 </div>
 </div>
 

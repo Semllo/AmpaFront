@@ -154,7 +154,7 @@ export class FormulariComponent implements OnInit {
     this.servicio.alumn = this.usuario.value;
 
     console.log( this.servicio.alumn);
-    /*this.servicio.GetForm(this.usuario).subscribe(data => {
+    this.servicio.GetForm(this.usuario).subscribe(data => {
 
       if(data.ok == true){
         this.servicio.cash = 10
@@ -165,11 +165,10 @@ export class FormulariComponent implements OnInit {
   },error => {
     //console.log(error)
     this.servicio.cash = 20
-  });*/
-    //this.servicio.PostForm(this.usuario);
+  });
     //console.log(this.usuario.value);
 
-    //this.route.navigate(['/pagar']); // navigate to other page
+    this.route.navigate(['/pagar']); // navigate to other page
     
 
   }
@@ -179,6 +178,8 @@ export class FormulariComponent implements OnInit {
   //            Calcul edat            //
   ///////////////////////////////////////
  edad(selectedValue:Date){
+
+  if(selectedValue != null){
   let hoy = new Date();
   let edad = hoy.getFullYear() - selectedValue.getFullYear();
   let m = hoy.getMonth() - selectedValue.getMonth();
@@ -187,6 +188,9 @@ export class FormulariComponent implements OnInit {
       edad--;
   }
   return edad;
+ } else {
+   return 0;
+ }
  }
 
    ///////////////////////////////////////
@@ -204,17 +208,18 @@ export class FormulariComponent implements OnInit {
 
         if(this.files.includes(event.target.files[i]))
         continue;    
+
         this.files.push(event.target.files[i]);
         reader.readAsDataURL(event.target.files[i]);
         reader.onload = () => {
-          //console.log(reader.result);
+          console.log(reader.result);
           this.imageUrl.push(reader.result);
         };
       }
     }
 
     this.usuario.value.images = this.imageUrl;
-
+    console.log(this.usuario.value.images);
 }
 
 
