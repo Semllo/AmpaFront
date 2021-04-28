@@ -30,6 +30,7 @@ import { PagarComponent } from './pages/pagar/pagar.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -63,7 +64,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule, 
     MatCheckboxModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [ {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
   AlumService],

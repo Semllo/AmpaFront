@@ -3,6 +3,10 @@ import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/f
 import { AlumService } from 'src/app/servicis/alum.service';
 import { ValidacionesComponent } from 'src/app/validaciones/validaciones/validaciones.component';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+
+
 
 interface Genere {
   value: string;
@@ -39,7 +43,9 @@ export class FormulariComponent implements OnInit {
   FPBasica2: string [] = ['Instal·lacions electròniques i mecànica'];
 
   constructor( public servicio: AlumService,
-    private route:Router  ) { 
+    private route:Router,
+    private _snackBar: MatSnackBar,
+    private sanitizer: DomSanitizer  ) { 
 
     this.usuario = new FormGroup({
       auth0: new FormControl(true, [Validators.required, Validators.minLength(0), Validators.requiredTrue]),
@@ -151,9 +157,9 @@ export class FormulariComponent implements OnInit {
   ///////////////////////////////////////
   validar() {
     
+    console.log( this.usuario.value);
     this.servicio.alumn = this.usuario.value;
 
-    console.log( this.servicio.alumn);
     this.servicio.GetForm(this.usuario).subscribe(data => {
 
       if(data.ok == true){
@@ -166,7 +172,7 @@ export class FormulariComponent implements OnInit {
     //console.log(error)
     this.servicio.cash = 20
   });
-    //console.log(this.usuario.value);
+    console.log(this.servicio.alumn);
 
     this.route.navigate(['/pagar']); // navigate to other page
     
@@ -198,6 +204,7 @@ export class FormulariComponent implements OnInit {
   ///////////////////////////////////////
   onFileSelected(event: any) {
 
+    //console.log(event.target.files);
     if( event.target.files.length > 0) {
     
       for(let i = 0; i < event.target.files.length; i++ ) {
@@ -207,19 +214,30 @@ export class FormulariComponent implements OnInit {
           continue;
 
         if(this.files.includes(event.target.files[i]))
-        continue;    
+        continue; 
+        
+        if(!event.target.files[i].name.includes('.jpg') && !event.target.files[i].name.includes('.png')  && !event.target.files[i].name.includes('.pdf') ){
+          this._snackBar.open('Per motius de seguretat, sols es poden adjuntar documents jpg, png o pdf.', `D'acord.`);
+          continue; 
+        }
 
         this.files.push(event.target.files[i]);
         reader.readAsDataURL(event.target.files[i]);
+        
         reader.onload = () => {
-          console.log(reader.result);
-          this.imageUrl.push(reader.result);
+          
+          let safeUrl;
+
+          if(typeof reader.result == 'string')
+          safeUrl = this.sanitizer.bypassSecurityTrustUrl(reader.result);
+          
+          this.imageUrl.push(safeUrl);
         };
       }
     }
 
     this.usuario.value.images = this.imageUrl;
-    console.log(this.usuario.value.images);
+    //console.log(this.usuario.value.images);
 }
 
 
@@ -231,7 +249,7 @@ export class FormulariComponent implements OnInit {
   }
 
   reset(){
-    console.log('reset')
+
     this.usuario.reset();
   }
 }

@@ -411,7 +411,9 @@
                    
                     <div class="col-12 margenTop2 row" *ngFor="let file of files;let indice=index">
                     <div class="col-11 animate__animated animate__fadeInDown">
-                        <img *ngIf="imageUrl[indice]" class="imatgePre" [src]="imageUrl[indice]" />
+                        <img *ngIf="imageUrl[indice] && !file.name.includes('.pdf')" class="imatgePre" [src]="imageUrl[indice]" />
+                        <img *ngIf="imageUrl[indice] && file.name.includes('.pdf')" class="imatgePre" src="./../../../assets/img/pdflogo.png" />
+
                         {{file.name}}
                     </div>
                         <div  class="col-1 animate__animated animate__fadeInDown">

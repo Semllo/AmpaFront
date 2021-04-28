@@ -50,7 +50,6 @@ if(error){
     try {
       const respone = await this.servicio.charge(this.servicio.cash, token.id);
       if( respone.ok == true){
-        this.servicio.PostForm(this.servicio.alumn);
         console.log(respone);
     
         Swal.fire({
