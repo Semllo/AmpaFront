@@ -4,4 +4,4 @@ export const environment = {
 
 };
 // http://localhost:3000/api
-//http://ampaiesjaumeprimer.es:3000/api
+//https://backend.ampaiesjaumeprimer.es/api

@@ -28,16 +28,6 @@ export class ValidacionesComponent implements OnInit {
     return ValidacionesComponent.DNIC(nro);
   }
 
-  static data(control: FormControl): ValidationErrors | null {
-    
-   // console.log(control.parent?.parent?.value.edad);
-    if (control.value > new Date()){
-      return {error: 'El data no pot ser futura'};
-    } else {
-      return null;
-      
-    }
-  }
  
   static DNIC(nro:any): ValidationErrors | null {
 

@@ -14,6 +14,7 @@ export class PagarComponent implements OnInit, AfterViewInit {
 
   loader = false;
 
+
   @ViewChild('cardInfo') cardInfo!: ElementRef;
   cardError: string | undefined = '';
   card: any;
@@ -43,7 +44,6 @@ if(error){
  // console.log(this.cardError);
 
 }
-
 }
 
   async onClick(){

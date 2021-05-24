@@ -29,16 +29,6 @@ export class AlumService {
 
   }
 
-  public PostForm( formData: any ) {
-    console.log(formData.value);
-
-    this.http.post<any>(`${ base_url }/usuarios/`, formData.value ).subscribe(data => {
-
-        console.log(data);
-
-    },error => console.log(error));
-  }
-
   charge( cantidad:number, tokenID:String ){
 
     return this.http.post<any>(`${ base_url }/usuarios/pagar`, {

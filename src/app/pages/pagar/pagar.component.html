@@ -5,10 +5,12 @@
 
 <div class="credit-card row">
     <div class="row">
-        <div class="col-sm-4">
-            <h2>Total a pagar: {{this.servicio.cash}} <i class="fas fa-euro-sign"></i></h2>
+        <div class="col-sm-3">
+            <h2>Total a pagar: {{this.servicio.cash}} <i class="fas fa-euro-sign"></i> </h2>    
         </div>
-
+        <div class="col-sm-1">
+            <mat-spinner *ngIf="this.servicio.cash == 0" [diameter]="30" class="loader"></mat-spinner>
+        </div>
 
     <div class="col-sm-3">
     

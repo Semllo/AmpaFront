@@ -35,13 +35,13 @@
         </div>
         <div class="col-sm">
             <mat-form-field appearance="fill" class="input">
-                <mat-label>Primer apellido</mat-label>
+                <mat-label>Primer cognom</mat-label>
                 <input formControlName="primer" matInput>
             </mat-form-field>
         </div>
         <div class="col-sm">
             <mat-form-field appearance="fill" class="input">
-                <mat-label>Segon apellido</mat-label>
+                <mat-label>Segon cognom</mat-label>
                 <input formControlName="segon" matInput>
             </mat-form-field>
         </div>
@@ -133,7 +133,7 @@
             <div class="col-sm">
                 <mat-form-field appearance="fill" class="input">    
                     <mat-label>Data de naixement</mat-label>
-                    <input formControlName="data" matInput [matDatepicker]="picker">
+                    <input formControlName="data" matInput  [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -186,7 +186,7 @@
      
     </div>
 </div>
-    <h2>Segón tutor del menor(Opcional)<i class="fas fa-user-friends"></i></h2>
+    <h2>Segon tutor del menor(Opcional)<i class="fas fa-user-friends"></i></h2>
     <div formGroupName="tutor2">
 
     <div class="row">
@@ -291,9 +291,9 @@
     <div class="row anchura98">
     <mat-card class="margenTop col-sm">
 
-        <h2>Estudis del curs actual. <i class="fas fa-book"></i></h2>
+        <h2>Nivell actual. <i class="fas fa-book"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu nivell d'aquest any</label>
             <mat-radio-group
             aria-labelledby="example-radio-group-label"
             class="example-radio-group" formControlName="nivell">
@@ -307,7 +307,7 @@
 
     <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='ESO'">
 
-        <h2>Selecciona un nivell. <i class="fas fa-layer-group"></i></h2>
+        <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
             <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
@@ -321,12 +321,25 @@
 
     <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='BATXILLERAT'">
 
-        <h2>Selecciona un nivell. <i class="fas fa-layer-group"></i></h2>
+        <h2>Selecciona una modalitat. <i class="fas fa-layer-group"></i></h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix la teua modalitat d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
+            <mat-radio-button class="example-radio-button" *ngFor="let modalitat of modalitats" [value]="modalitat">
+                {{modalitat}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell!='ESO' && this.usuario.value.nivell=='BATXILLERAT' && (this.usuario.value.cicle=='Humanitats i Ciències Socials') || (this.usuario.value.cicle=='Ciències i Tecnologia') ">
+
+        <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
             <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
-            <mat-radio-button class="example-radio-button" *ngFor="let curs of modalitats" [value]="curs">
-                {{curs}}
+                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
+                    <div>{{curs}}</div>
             </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -335,12 +348,25 @@
 
     <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='CFGM'">
 
-        <h2>Selecciona un nivell. <i class="fas fa-layer-group"></i></h2>
+        <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
+            <mat-radio-button class="example-radio-button" *ngFor="let cicle of cicles1" [value]="cicle">
+                {{cicle}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell!='ESO' && this.usuario.value.nivell=='CFGM' && (this.cicles1.indexOf(this.usuario.value.cicle)!=-1)">
+
+        <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
             <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
-            <mat-radio-button class="example-radio-button" *ngFor="let curs of cicles1" [value]="curs">
-                {{curs}}
+                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
+                    <div>{{curs}}</div>
             </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -349,12 +375,26 @@
 
     <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='CFGS'">
 
-        <h2>Selecciona un nivell. <i class="fas fa-layer-group"></i></h2>
+        <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
+            <mat-radio-button class="example-radio-button" *ngFor="let cicle of cicles2" [value]="cicle">
+                {{cicle}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell!='ESO' && this.usuario.value.nivell=='CFGS' && (this.cicles2.indexOf(this.usuario.value.cicle)!=-1)">
+
+        <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
             <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
-            <mat-radio-button class="example-radio-button" *ngFor="let curs of cicles2" [value]="curs">
-                {{curs}}
+                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
+                    <div>{{curs}}</div>
             </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -363,40 +403,63 @@
 
     <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='FP BÀSICA'">
 
-        <h2>Selecciona un nivell. <i class="fas fa-layer-group"></i></h2>
+        <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
-            <mat-radio-group
-            aria-labelledby="example-radio-group-label"
-            class="example-radio-group">
-            <mat-radio-button class="example-radio-button" *ngFor="let curs of FPBasica" [value]="curs">
-                {{curs}}
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
+            <mat-radio-button class="example-radio-button" *ngFor="let cicle of FPBasica" [value]="cicle">
+                {{cicle}}
             </mat-radio-button>
             </mat-radio-group>
         </div>
 
     </mat-card>
 
-    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='FP BÀSICA 2a oportunitat'">
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell!='ESO' && this.usuario.value.nivell=='FP BÀSICA' && (this.FPBasica.indexOf(this.usuario.value.cicle)!=-1)">
 
-        <h2>Selecciona un nivell. <i class="fas fa-layer-group"></i></h2>
+        <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
             <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
-            <mat-radio-group
-            aria-labelledby="example-radio-group-label"
-            class="example-radio-group">
-            <mat-radio-button class="example-radio-button" *ngFor="let curs of FPBasica2" [value]="curs">
-                {{curs}}
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
+                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
+                    <div>{{curs}}</div>
             </mat-radio-button>
             </mat-radio-group>
         </div>
 
     </mat-card>
 
-  
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell=='CE'">
+
+        <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
+            <mat-radio-button class="example-radio-button" *ngFor="let cicle of FPBasica2" [value]="cicle">
+                {{cicle}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="margenTop col-sm margen5 animate__animated animate__fadeInRight" *ngIf="this.usuario.value.nivell!='ESO' && this.usuario.value.nivell=='CE' && (this.FPBasica2.indexOf(this.usuario.value.cicle)!=-1)">
+
+        <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
+        <div class="col-sm">
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
+                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
+                    <div>{{curs}}</div>
+            </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+    </mat-card>
+
     <mat-card class="margenTop row margen4">
         
-        <h2>Adjunta el DNI, SIP(obligatori) i la targeta de situació especial(opcional).<i class="fas fa-id-card"></i> </h2>
+        <h2 >Adjunta el DNI, SIP i la targeta de situació especial<a (click)="infoDNI()" style="cursor:pointer;"><i class="fas fa-info-circle"></i></a> </h2>
         
         <div class="col-md-12">
              
@@ -427,6 +490,7 @@
         </div>
 
     </mat-card>
+
 
     </div>
     <mat-card class="margenTop">

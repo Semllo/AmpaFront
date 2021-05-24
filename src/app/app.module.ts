@@ -33,9 +33,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
+import {MatDialogModule} from '@angular/material/dialog';
 
-
-
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS,} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,15 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCheckboxModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
-  providers: [ {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+  providers: [ 
+  {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},       
+  { provide: DateAdapter, useClass: MomentDateAdapter,deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]},
+  {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+ 
+
   AlumService],
   bootstrap: [AppComponent]
 })
