@@ -60,36 +60,36 @@ export class FormulariComponent implements OnInit {
 
     this.usuario = new FormGroup({
       auth0: new FormControl(true, [Validators.required, Validators.minLength(0), Validators.requiredTrue]),
-      auth1: new FormControl(false, []),
+      auth1: new FormControl(true, []),
       auth2: new FormControl(false, []),
-      correu: new FormControl('marcsemperlloret@gmail.com', [Validators.required, Validators.minLength(2), Validators.email]),
+      correu: new FormControl('', [Validators.required, Validators.minLength(2), Validators.email]),
       curs: new FormControl('', [Validators.required, Validators.minLength(0)]),
       cicle: new FormControl('', []),
-      curspro: new FormControl('asdf', [Validators.required, Validators.minLength(2)]),
+      curspro: new FormControl('', [Validators.required, Validators.minLength(2)]),
       data: new FormControl(new Date(), [Validators.required, Validators.minLength(8),Validators.maxLength(9)]),
-      dni: new FormControl('0000000T', [Validators.required, Validators.minLength(7), Validators.maxLength(9), ValidacionesComponent.DNI,]),
-      dniGerma: new FormControl('0000000T', []),
-      domicili: new FormControl('dd', [Validators.required, Validators.minLength(2)]),
+      dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(9), ValidacionesComponent.DNI,]),
+      dniGerma: new FormControl('', []),
+      domicili: new FormControl('', [Validators.required, Validators.minLength(2)]),
       edad:  new FormControl(-1, [Validators.required]),
-      genero: new FormControl('F', [Validators.required, Validators.minLength(1)]),
-      germans: new FormControl('2', []),
+      genero: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      germans: new FormControl('', []),
       images: new FormControl([], [Validators.required, ]),
-      localitat: new FormControl('dd', [Validators.required, Validators.minLength(2)]),
-      localitatnaix: new FormControl('dd', [Validators.required, Validators.minLength(2)]),
-      nacionalitat: new FormControl('dd', [Validators.required, Validators.minLength(2)]),
-      naiximent: new FormControl('dd', [Validators.required, Validators.minLength(2)]),
-      nia: new FormControl('1111111', [Validators.required, Validators.minLength(6)]),
-      niaGerma: new FormControl('1111111', []),
+      localitat: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      localitatnaix: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      nacionalitat: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      naiximent: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      nia: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      niaGerma: new FormControl('', []),
       nivell: new FormControl('', [Validators.required, Validators.minLength(1)],),
-      nom: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
-      pais: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
-      postal: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
-      primer: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
-      procedencia: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
-      provincia: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
+      nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      pais: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      postal: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      primer: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      procedencia: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      provincia: new FormControl('', [Validators.required, Validators.minLength(2)]),
       repetidor: new FormControl('2', []),
-      segon: new FormControl('ww', [Validators.required, Validators.minLength(2)]),
-      tel: new FormControl('111111111', [Validators.required, Validators.minLength(2), ValidacionesComponent.tel]),
+      segon: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      tel: new FormControl('', [Validators.required, Validators.minLength(2), ValidacionesComponent.tel]),
       tutor1: new FormGroup({   
         correuTutor: new FormControl('', []),   
         dniTutor: new FormControl('', []),
@@ -110,7 +110,7 @@ export class FormulariComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.usuario.get("germans")?.valueChanges.subscribe(selectedValue => {
+   /* this.usuario.get("germans")?.valueChanges.subscribe(selectedValue => {
      if(selectedValue == 1) {
       this.usuario.get('dniGerma')?.setValidators([Validators.required, Validators.minLength(7), Validators.maxLength(9), ValidacionesComponent.DNI,]);
       this.usuario.get('niaGerma')?.setValidators( [Validators.required, Validators.minLength(6)]);
@@ -126,7 +126,7 @@ export class FormulariComponent implements OnInit {
       this.usuario.get('niaGerma')?.updateValueAndValidity();
 
      }
-    });
+    });*/
 
     this.usuario.get("data")?.valueChanges.subscribe(selectedValue => {
       if(selectedValue != undefined) {
@@ -173,13 +173,14 @@ export class FormulariComponent implements OnInit {
   ///////////////////////////////////////
   validar() {
     
-    this.usuario.value.images = this.imageUrl;
+    // this.usuario.value.images = this.imageUrl;
 
+    this.servicio.imageUrl = this.imageUrl;
     console.log( this.usuario.value);
 
     this.servicio.alumn = this.usuario.value;
 
-    this.servicio.GetForm(this.usuario).subscribe(data => {
+    /*this.servicio.GetForm(this.usuario).subscribe(data => {
 
       if(data.ok == true){
         this.servicio.cash = 10
@@ -190,7 +191,7 @@ export class FormulariComponent implements OnInit {
   },error => {
     //console.log(error)
     this.servicio.cash = 20
-  });
+  });*/
     console.log(this.servicio.alumn);
 
     this.route.navigate(['/pagar']); // navigate to other page
@@ -277,9 +278,32 @@ export class FormulariComponent implements OnInit {
 
     Swal.fire({
       icon: 'info',
-      title: 'Informació',
-      text: `S'ha d'adjuntar obligatòriament el DNI i SIP, si l'alumne no te DNI es pot adjuntar NIE, permís de residència o passaport.
-      Opcionalment es pot adjuntar la targeta de família nombrosa, discapacitat o família monoparental.`,
+      html: `
+      <h2 style="text-align: left"><strong>Informació.</strong></h2>
+      <h3 style="text-align: left"><strong>
+      1r Document Identificatiu:<br><br>  </strong>
+      <i class="fas fa-arrow-right"></i>&nbsp; En el cas de ser menor de 18 anys algun dels documents següents: DNI,     
+        targeta d’identitat d’estranger, expedida per la comissaria de policia o    
+        oficina d’estrangers, certificat d’empadronament en un municipi, visat      
+        d’estudis o targeta d’estudiant estranger.<br><br>      
+        <i class="fas fa-arrow-right"></i>&nbsp; En el cas de ser major de 18 anys algun dels documents següents: DNI, targeta      
+        d’identitat d’estranger, expedida per la comissaria de policia o oficina      
+        d’estrangers, visat d’estudis o targeta d’estudiant estranger.<br>      
+
+      <br> 
+      <strong>2n Document (SIP)</strong>
+      <br><br>
+  
+
+      <strong>3r Document (tarjeta situación especial):</strong><br><br>   
+
+      <i class="fas fa-arrow-right"></i>&nbsp; Família nombrosa.<br>     
+      <i class="fas fa-arrow-right"></i>&nbsp; Família Monoparental.<br>    
+      <i class="fas fa-arrow-right"></i>&nbsp; Certificat de grau de minusvalía.<br>    
+      <i class="fas fa-arrow-right"></i>&nbsp; Document acreditatiu d’algu cas especial.<br><br>    
+
+      </h3>`,
+      confirmButtonText:  `D'acord`
     })
 
   }

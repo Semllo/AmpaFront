@@ -1,12 +1,21 @@
 .gris {
   background-color: rgba(218, 210, 210, 0.404);
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .margenTop {
   margin-top: 1%;
 }
+
+.margenTop5 {
+  margin-top: 2%;
+}
+
+.izquierda1 {
+  padding-left: 4%;
+}
+
 
 .container {
   padding-top: 4%;
@@ -17,4 +26,17 @@
   height: 30%;
   margin-top: 1%;
   margin-left: 2%;
+}
+
+.bajar {
+  padding-top: 2%;
+
+}
+
+.input {
+  width: 100%;
+}
+
+.margenBot5 {
+  padding-bottom: 4%;
 }

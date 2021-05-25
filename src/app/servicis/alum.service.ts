@@ -15,22 +15,26 @@ export class AlumService {
 
   cash: number;
   alumn: any;
+  imageUrl: any [] = [];
 
   constructor(private http: HttpClient) { 
 
-    this.cash = 0;
+    this.cash = 20;
   }
 
-  public GetForm( formData: any ) {
+  public GetForm() {
     //console.log(formData);
 
-   return this.http.post<any>(`${ base_url }/usuarios/germans`, formData.value);  
+   return this.http.post<any>(`${ base_url }/usuarios/germans`, this.alumn);  
 
 
   }
 
   charge( cantidad:number, tokenID:String ){
 
+    this.alumn.images = this.imageUrl;
+
+    console.log(this.alumn);
     return this.http.post<any>(`${ base_url }/usuarios/pagar`, {
       cantidad: cantidad,
       stripeToken: tokenID,

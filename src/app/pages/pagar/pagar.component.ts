@@ -13,7 +13,10 @@ import Swal from 'sweetalert2'
 export class PagarComponent implements OnInit, AfterViewInit {
 
   loader = false;
-
+  Germans: number;
+  niaGerma: string;
+  dniGerma: string;
+  data = new Date();
 
   @ViewChild('cardInfo') cardInfo!: ElementRef;
   cardError: string | undefined = '';
@@ -29,7 +32,13 @@ ngAfterViewInit(): void {
   constructor(private ngZone: NgZone,
     public servicio: AlumService, 
      private route:Router,
-    ) { }
+    ) {
+
+      this.Germans = 0;
+      this.niaGerma = "";
+      this.dniGerma = "";
+
+  }
 
   ngOnInit(): void {
 
@@ -84,5 +93,37 @@ if(error){
   this.loader = false;
 
   }
+
+
+  cambio(dniGerma: string): void {
+    
+
+   
+      if (this.Germans == 1 && this.niaGerma && this.dniGerma && dniGerma.length > 7 && dniGerma.length < 10 ) {
+      this.servicio.alumn.dniGerma = this.dniGerma;
+      this.servicio.alumn.niaGerma = this.niaGerma;
+      this.servicio.alumn.germans = this.Germans;
+
+      console.log(this.Germans);
+      console.log(this.niaGerma);
+      console.log(this.dniGerma.length);
+      console.log(this.servicio.alumn);
+      this.servicio.GetForm().subscribe(data => {
+        console.log(data);
+        if(data.ok == true){
+          this.servicio.cash = 10
+        } else {
+          this.servicio.cash = 20
+        }
+  
+    },error => {
+      //console.log(error)
+      this.servicio.cash = 20
+    });
+    }
+
+  }
+
+
 
 }

@@ -5,7 +5,7 @@
     
     <mat-card>
 
-        <h2>Les meues dades <i class="fas fa-user"></i></h2>
+        <h2>Les meues dades. <i class="fas fa-user"></i></h2>
 
         <div class="row">
 
@@ -145,7 +145,7 @@
     
     <mat-card  class="margenTop animate__animated animate__fadeInDown" *ngIf="(this.usuario.value.edad<18) && (this.usuario.value.edad>=0)" >
 
-    <h2>Primer tutor del menor<i class="fas fa-user-friends"></i></h2>
+    <h2>Primer tutor del menor.<i class="fas fa-user-friends"></i></h2>
 
     <div formGroupName="tutor1">
     <div class="row">
@@ -186,7 +186,7 @@
      
     </div>
 </div>
-    <h2>Segon tutor del menor(Opcional)<i class="fas fa-user-friends"></i></h2>
+    <h2>Segon tutor del menor(Opcional).<i class="fas fa-user-friends"></i></h2>
     <div formGroupName="tutor2">
 
     <div class="row">
@@ -229,39 +229,9 @@
     </div>
 </mat-card>
 
-<mat-card class="margenTop">
-
-    <h2>Familiars a l'AMPA <i class="fas fa-users"></i></h2>
-
-    <div class="row">
-            <div class="col-sm-3 bajar">
-            <mat-radio-group aria-label="Select an option" formControlName="germans">
-                ¿Germans?
-                <mat-radio-button value="1"class="izquierda1">Sí</mat-radio-button>
-                <mat-radio-button value="2" class="izquierda1">No</mat-radio-button>
-              </mat-radio-group>
-        </div>
-
-        <div class="col-sm animate__animated animate__fadeInRight" *ngIf="this.usuario.value.germans == 1">
-            <mat-form-field appearance="fill" class="input">
-                <mat-label>NIA del germà</mat-label>
-                <input formControlName="niaGerma" matInput>
-            </mat-form-field>
-            </div>
-            <div class="col-sm animate__animated animate__fadeInRight" *ngIf="this.usuario.value.germans == 1">
-            <mat-form-field appearance="fill" class="input">
-                <mat-label>DNI del germà</mat-label>
-                <input formControlName="dniGerma" matInput>
-            </mat-form-field>
-            </div>
-         
-      </div>
-
-</mat-card>
-
     <mat-card class="margenTop">
 
-        <h2>Estudis del curs anterior <i class="fas fa-arrow-left"></i></h2>
+        <h2>Estudis del curs anterior. <i class="fas fa-arrow-left"></i></h2>
 
         <div class="row">
             <div class="col-sm">
@@ -293,7 +263,7 @@
 
         <h2>Nivell actual. <i class="fas fa-book"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu nivell d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu nivell d'aquest any.</label>
             <mat-radio-group
             aria-labelledby="example-radio-group-label"
             class="example-radio-group" formControlName="nivell">
@@ -309,7 +279,7 @@
 
         <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
             <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos" [value]="curs">
                 {{curs}}
@@ -323,7 +293,7 @@
 
         <h2>Selecciona una modalitat. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix la teua modalitat d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix la teua modalitat d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
             <mat-radio-button class="example-radio-button" *ngFor="let modalitat of modalitats" [value]="modalitat">
                 {{modalitat}}
@@ -336,7 +306,7 @@
 
         <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
                 <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
                     <div>{{curs}}</div>
@@ -350,7 +320,7 @@
 
         <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
             <mat-radio-button class="example-radio-button" *ngFor="let cicle of cicles1" [value]="cicle">
                 {{cicle}}
@@ -363,7 +333,7 @@
 
         <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
                 <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
                     <div>{{curs}}</div>
@@ -377,7 +347,7 @@
 
         <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
             <mat-radio-button class="example-radio-button" *ngFor="let cicle of cicles2" [value]="cicle">
                 {{cicle}}
@@ -391,7 +361,7 @@
 
         <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
                 <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
                     <div>{{curs}}</div>
@@ -405,7 +375,7 @@
 
         <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
             <mat-radio-button class="example-radio-button" *ngFor="let cicle of FPBasica" [value]="cicle">
                 {{cicle}}
@@ -419,7 +389,7 @@
 
         <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
                 <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
                     <div>{{curs}}</div>
@@ -433,7 +403,7 @@
 
         <h2>Selecciona un cicle. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu cicle d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="cicle">
             <mat-radio-button class="example-radio-button" *ngFor="let cicle of FPBasica2" [value]="cicle">
                 {{cicle}}
@@ -447,7 +417,7 @@
 
         <h2>Selecciona un curs. <i class="fas fa-layer-group"></i></h2>
         <div class="col-sm">
-            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any</label>
+            <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
                 <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
                     <div>{{curs}}</div>
@@ -459,7 +429,7 @@
 
     <mat-card class="margenTop row margen4">
         
-        <h2 >Adjunta el DNI, SIP i la targeta de situació especial<a (click)="infoDNI()" style="cursor:pointer;"><i class="fas fa-info-circle"></i></a> </h2>
+        <h2 >Adjunta documentació necessaria.<a (click)="infoDNI()" style="cursor:pointer;"><i class="fas fa-info-circle"></i></a> </h2>
         
         <div class="col-md-12">
              
@@ -496,6 +466,7 @@
     <mat-card class="margenTop">
 
         <h2>Clausules. <i class="fas fa-clipboard-check"></i></h2>
+        <h3><u>OBLIGATÒRI</u></h3>
             <mat-checkbox class="marg" formControlName="auth0"> 
                 <span class="wrap-mat-radio-label text marg">
                     (1) Em done per assabentat/-da que està prohibit que l’alumnat porte i use qualsevol 
@@ -516,34 +487,22 @@
    
 
     <mat-card class="margenTop">
+        <h3><u>OPCIONAL</u></h3>
 
         <mat-checkbox class="marg" formControlName="auth1"> 
             <span class="wrap-mat-radio-label text marg">
-                Autoritze que el meu fill/filla isca de l’institut a l’hora de música i/o optativa 
-                (perquè té l’assignatura convalidada), i em faig responsable de qualsevol tipus de lesió 
-                i danys que pogueren ocórrer fora del centre, tant en la persona del meu fill/a, com en 
-                terceres persones. A més a més allibere de qualsevol responsabilitat a l’institut i em 
-                compromet d’assumir dita responsabilitat.   
-            </span>
-        </mat-checkbox>
-
-    </mat-card>
-
-    <mat-card class="margenTop">
-
-        <mat-checkbox class="marg" formControlName="auth2"> 
-            <span class="wrap-mat-radio-label text marg" >
-                Amb la inclusió de les noves tecnologies dins de les comunicacions, publicacions i accions comercials que 
-                pot realitzar l'IES Jaume I, i la possibilitat que en estes puguen aparèixer imatges vostres durant la 
-                realització de les seves activitats. I com que el dret a la pròpia imatge està reconegut a l'article 18.1 de 
-                la Constitució i regulat per la Llei 1/1982, de 5 de maig, sobre el dret a l'honor, a la intimitat personal i 
-                familiar i a la pròpia imatge i el Reglament (UE) 2016/679 del Parlament Europeu i del Consell, de 27 d'abril 
-                de 2016, relatiu a la protecció de les persones físiques pel que fa al tractament de dades personals i a la 
-                lliure circulació d'aquestes dades, l'IES Jaume I vos demana el consentiment per poder publicar les imatges 
-                en les quals aparegueu individualment o en grup que se us puguen realitzar en les activitats del centre. 
-                Autoritze a l'IES Jaume I a un ús pedagògic / promocional de les imatges i filmacions realitzades en 
-                activitats escolar lectives, complementàries i/o extraescolars organitzades pel propi centre a publicar-les 
-                en la pàgina web, perfils en xarxes socials de l’institut i en la premsa local.
+                Amb la inclusió de les noves tecnologies dins de les comunicacions i publicacions promocionals que
+                pot realitzar l'IES Jaume I, i la possibilitat que en estes puguen aparèixer imatges vostres durant la
+                realització de les seves activitats. I com que el dret a la pròpia imatge està reconegut a l'article 18.1
+                de la Constitució i regulat per la Llei 1/1982, de 5 de maig, sobre el dret a l'honor, a la intimitat
+                personal i familiar i a la pròpia imatge i el Reglament (UE) 2016/679 del Parlament Europeu i del
+                Consell, de 27 d'abril de 2016, relatiu a la protecció de les persones físiques pel que fa al
+                tractament de dades personals i a la lliure circulació d'aquestes dades, l'IES Jaume I vos demana el
+                consentiment per poder publicar les imatges en les quals aparegueu individualment o en grup que
+                se us puguen realitzar en les activitats del centre. Autoritze a l'IES Jaume I a un ús pedagògic /
+                promocional de les imatges i filmacions realitzades en activitats escolar lectives, complementàries
+                i/o extraescolars organitzades pel propi centre a publicar-les en la pàgina web, perfils en xarxes
+                socials de l’institut i en la premsa local.  
             </span>
         </mat-checkbox>
 
@@ -560,6 +519,39 @@
            <button mat-raised-button color="primary" type="submit" [disabled]="usuario.invalid || (files.length < 2)">Continuar <i class="fas fa-arrow-right"></i></button>
        </div>
         </div>
+    </mat-card>
+
+    <mat-card class="margenTop">
+        <h2>Informació. </h2>
+           <h4> <strong>- Entrada i eixida del centre.</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;L’alumnat de Secundària Obligatòria no podrà eixir del centre durant l’horari escolar, amb independència de l’edat que tinga.<br>
+            <i class="fas fa-arrow-right"></i>&nbsp;L’alumnat de Batxillerat i Cicles Formatius sols podrà eixir de l’institut a l’hora del 1r esplai (10:45 a 11:15) sempre que es mostre el carnet escolar.<br>
+            <i class="fas fa-arrow-right"></i>&nbsp;Si l’alumnat de Batxillerat i Cicles Formatius no té els 18 anys amb data 15 de setembre i els pares no volen que isca del centre en horari escolar, hauran de sol·licitar-ho a la Direcció del centre, mitjançant instància ( disponible a consergeria).<br>
+            <br><strong>- Llibres Curs 2019/20.</strong> <br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;El banc de llibres sols repartirà llibres a alumnes d’ESO i FP Bàsica. Les famílies que pertanyen a la xarxa de llibres arreplegaran els llibres a setembre, i la resta haurà de comprar els llibres als llocs habituals, llibreries, etc. Les llistes de llibres estaran penjades a la pàgina web del centre.<br>
+            <i class="fas fa-arrow-right"></i>&nbsp;Els llibres que siguen d’activitats (on cal escriure sobre ells) no entren en el banc de llibres, i tots els alumnes cal que els compren als llocs habituals.<br><br>
+           
+            
+            <strong>- Taxes de matrícula de la Generalitat (SOLS BATXILLERAT I CICLES FORMATIUS)</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;S’entregaran a novembre i hauran de pagar-les a les oficines de les entitats col·laboradores. El no pagament de les taxes de matrícula que els seran lliurades suposa la baixa immediata del centre.<br><br>
+            
+            <strong>- Seguiment del rendiment escolar dels alumnes per internet.</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;Tal com està fent-se fins ara, els pares d’alumnes d’ESO tindran informació dels seus fills diàriament per internet a la ”web família 2” de la Conselleria d’Educació (hi ha un enllaç per accedir-hi des de la nostra pàgina web). En la primera reunió del curs amb el tutor/tutora els donarem les claus d’accés. El servei és totalment gratuït.<br><br>
+            
+            <strong>- Sol·licitud d’ajuda per al transport escolar.</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;L’alumnat d’ESO I FP Bàsica, interessat en l’ajuda de transport escolar, cal que sol·licite els impressos en la consergeria del centre (quan la Conselleria publique les ajudes), i s’ha de presentar degudament complimentat a la secretaria del centre.<br><br>
+            
+            <strong>- Participació en viatges i eixides escolars.</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;Quan una activitat comporte un cost econòmic per part de l’alumne, i el pare , mare, tutor o tutora legal comunique la participació del seu fill o filla mitjançant l’autorització, com que el cost individual del viatge es determina en funció del nombre total de participants, en cas que l’alumne no vulga o no puga participar en l’activitat, no se li retornarà la quantia corresponent del viatge.<br><br>
+            
+            <i class="fas fa-arrow-right"></i>&nbsp; Les activitats estaran condicionades al fet que participe més del 85% de l’alumnat afectat, a més, l’assistència d’alumnes podrà estar limitada pel seu rendiment i comportament o actitud en les classes i /o pel seu comportament en activitats anteriors.<br><br>
+            
+            <strong>- Carnet del centre.</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;En setembre vindrà un fotògraf per a fer les fotos de l’alumnat per als carnets, després els tutors/tutores els repartiran al seu alumnat.<br>
+            <br><strong>-  Permuta de faltes lleus de disciplina per tasques socials al centre.</strong><br><br>
+            <i class="fas fa-arrow-right"></i>&nbsp;Els partes de faltes de lleus, podran ser permutats per tasques socials realitzades en el centre educatiu, baix acord signat amb el pare, mare, tutor/a legal.<br><br></h4> 
+       
+               
     </mat-card>
 
   <div class="margenbot oculto">Fet per Marc Semper.</div>
