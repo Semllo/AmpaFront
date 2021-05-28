@@ -97,9 +97,7 @@ if(error){
 
   cambio(dniGerma: string): void {
     
-
-   
-      if (this.Germans == 1 && this.niaGerma && this.dniGerma && dniGerma.length > 7 && dniGerma.length < 10 ) {
+      if (this.Germans == 1 && this.niaGerma && this.dniGerma && dniGerma.length > 7 && dniGerma.length < 10 &&  this.servicio.alumn.nia != this.niaGerma && this.servicio.alumn.dni != this.dniGerma) {
       this.servicio.alumn.dniGerma = this.dniGerma;
       this.servicio.alumn.niaGerma = this.niaGerma;
       this.servicio.alumn.germans = this.Germans;
@@ -116,6 +114,7 @@ if(error){
           this.servicio.cash = 20
         }
   
+        this.servicio.alumn.cognomgerma = data.usuarioDB[0].nom + " " + data.usuarioDB[0].primer + " " + data.usuarioDB[0].segon + " que cursa " + data.usuarioDB[0].curs +" "+ data.usuarioDB[0].cicle +" "+ data.usuarioDB[0].nivell;
     },error => {
       //console.log(error)
       this.servicio.cash = 20

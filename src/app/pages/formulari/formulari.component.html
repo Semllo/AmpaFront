@@ -12,7 +12,7 @@
             <div class="col-sm">
                 <mat-form-field appearance="fill" class="input">
                     <mat-label>NIA</mat-label>
-                    <input formControlName="nia" matInput>
+                    <input type="number" formControlName="nia" matInput>
                 </mat-form-field>
                 </div>
 
@@ -30,7 +30,7 @@
         <div class="col-sm">
             <mat-form-field appearance="fill" class="input">
                 <mat-label>Nom</mat-label>
-                <input formControlName="nom" matInput>
+                <input type="text" formControlName="nom" matInput>
             </mat-form-field>
         </div>
         <div class="col-sm">
@@ -78,7 +78,7 @@
             <div class="col-sm">
             <mat-form-field appearance="fill" class="input">
                 <mat-label>Codi postal</mat-label>
-                <input formControlName="postal" matInput>
+                <input type="number" formControlName="postal" matInput>
             </mat-form-field>
             </div>
             <div class="col-sm">
@@ -127,7 +127,7 @@
             <div class="col-sm">
             <mat-form-field appearance="fill" class="input">
                 <mat-label>Número de telèfon</mat-label>
-                <input formControlName="tel" matInput>
+                <input type="number" formControlName="tel" matInput>
             </mat-form-field>
             </div>
             <div class="col-sm">
@@ -268,7 +268,8 @@
             aria-labelledby="example-radio-group-label"
             class="example-radio-group" formControlName="nivell">
             <mat-radio-button  class="example-radio-button" *ngFor="let nivell of nivells" [value]="nivell">
-                {{nivell}}
+                <div *ngIf='nivell!="CE"'>  {{nivell}} </div>
+                <div *ngIf='nivell=="CE"'> CURS D'ESPECIALITZACIÓ </div>
             </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -419,7 +420,7 @@
         <div class="col-sm">
             <label id="example-radio-group-label">Elegeix el teu curs d'aquest any.</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="curs">
-                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:2;" [value]="curs">
+                <mat-radio-button class="example-radio-button" *ngFor="let curs of cursos| slice:0:1;" [value]="curs">
                     <div>{{curs}}</div>
             </mat-radio-button>
             </mat-radio-group>
@@ -509,19 +510,6 @@
     </mat-card>
 
     <mat-card class="margenTop">
-        <div class="row">
-
-       <div class="col-sm-9">
-           <button mat-raised-button color="warn" type="reset">Borrar les dades <i class="fas fa-redo" (click)="reset()"></i></button>
-       </div> 
-
-       <div class="col-sm-3">
-           <button mat-raised-button color="primary" type="submit" [disabled]="usuario.invalid || (files.length < 2)">Continuar <i class="fas fa-arrow-right"></i></button>
-       </div>
-        </div>
-    </mat-card>
-
-    <mat-card class="margenTop">
         <h2>Informació. </h2>
            <h4> <strong>- Entrada i eixida del centre.</strong><br><br>
             <i class="fas fa-arrow-right"></i>&nbsp;L’alumnat de Secundària Obligatòria no podrà eixir del centre durant l’horari escolar, amb independència de l’edat que tinga.<br>
@@ -553,6 +541,21 @@
        
                
     </mat-card>
+
+    <mat-card class="margenTop">
+        <div class="row">
+
+       <div class="col-sm-9">
+           <button mat-raised-button color="warn" type="reset">Borrar les dades <i class="fas fa-redo" (click)="reset()"></i></button>
+       </div> 
+
+       <div class="col-sm-3">
+           <button mat-raised-button color="primary" type="submit" [disabled]="usuario.invalid || (files.length < 2)">Continuar <i class="fas fa-arrow-right"></i></button>
+       </div>
+        </div>
+    </mat-card>
+
+   
 
   <div class="margenbot oculto">Fet per Marc Semper.</div>
  

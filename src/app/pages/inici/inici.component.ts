@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IniciComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
+        console.log(window.location.href)
+        if(('http://ampaiesjaumeprimer.es/inici' == window.location.href) || ('http://ampaiesjaumeprimer.es' == window.location.href))
+        window.location.href = 'https://ampaiesjaumeprimer.es';
+
   }
 
 }
