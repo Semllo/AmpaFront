@@ -23,6 +23,8 @@ export class ValidacionesComponent implements OnInit {
   }
 
   static DNI(control: FormControl): ValidationErrors | null {
+    
+  
     // console.log(control);
     let nro = control.value;
     return ValidacionesComponent.DNIC(nro);
@@ -31,8 +33,44 @@ export class ValidacionesComponent implements OnInit {
  
   static DNIC(nro:any): ValidationErrors | null {
 
-    let letra;
+
+
+    let dni = nro;
+
+
+    var numero, lete, letra;
+    var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+    dni = dni.toUpperCase();
+
+    if(expresion_regular_dni.test(dni) === true){
+        numero = dni.substr(0,dni.length-1);
+        numero = numero.replace('X', 0);
+        numero = numero.replace('Y', 1);
+        numero = numero.replace('Z', 2);
+        lete = dni.substr(dni.length-1, 1);
+        numero = numero % 23;
+        letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+        letra = letra.substring(numero, numero+1);
+        if (letra != lete) {
+            //alert('Dni erroneo, la letra del NIF no se corresponde');
+            return {DNI: false};
+        }else{
+            //alert('Dni correcto');
+            return null;
+        }
+    }else{
+        //alert('Dni erroneo, formato no válido');
+        return {DNI: false};
+    }
+    
+
+
+
+
+
    //console.log(nro);
+   /*
     if(nro)
     letra = (nro.substring(0, nro.length - 1)) % 23;
     switch (letra) {
@@ -129,8 +167,10 @@ export class ValidacionesComponent implements OnInit {
         if (nro.charAt(nro.length - 1) == 'E') {
           return null;
         } else { return {DNI: false} }
-        default: return {DNI: false} 
+        default: {
+          if (nro.charAt(0) == 'E') {}
+          return {DNI: false} }
     }
-
+*/
   }
 }

@@ -80,8 +80,8 @@ if(error){
                 payment_method: {
                   card: this.card,
                   billing_details: {
-                    name: this.servicio.alumn.nom + " " + this.servicio.alumn.primer + " " + this.servicio.alumn.segon,
                     email: correus,
+                    name: this.servicio.alumn.nom + " " + this.servicio.alumn.primer + " " + this.servicio.alumn.segon,
                     address: {
                       
                       city: this.servicio.alumn.localitat,
