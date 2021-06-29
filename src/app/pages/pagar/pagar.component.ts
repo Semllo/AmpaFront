@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 
 import Swal from 'sweetalert2'
 
-
 @Component({
   selector: 'app-pagar',
   templateUrl: './pagar.component.html',
@@ -16,7 +15,7 @@ export class PagarComponent implements OnInit, AfterViewInit {
   Germans: number;
   niaGerma: string;
   dniGerma: string;
-  data = new Date();
+  data = new Date(); 
 
   @ViewChild('cardInfo') cardInfo!: ElementRef;
   cardError: string | undefined = '';
@@ -56,8 +55,113 @@ if(error){
 }
 
   async onClick(){
+
     this.loader = true;
-    const { token, error } = await stripe.createToken(this.card);
+    console.log(this.loader);
+    this.servicio.GetUsuari().subscribe(data => {
+      console.log('No ets membre de lampa');
+        if (data.ok == true) {
+
+          this.servicio.PrePayment(this.servicio.cash).subscribe(data => {
+      
+      
+      
+            let correus = this.servicio.alumn.correu;
+      
+              if(this.servicio.alumn.tutor1.correu){
+                correus = this.servicio.alumn.tutor1.correu;
+            }
+            console.log('Pagado por ' + correus);
+
+             stripe.confirmCardPayment(
+               data.client_secret, 
+               {
+                receipt_email: correus,
+                payment_method: {
+                  card: this.card,
+                  billing_details: {
+                    name: this.servicio.alumn.nom + " " + this.servicio.alumn.primer + " " + this.servicio.alumn.segon,
+                    email: correus,
+                    address: {
+                      
+                      city: this.servicio.alumn.localitat,
+                      state: this.servicio.alumn.provincia,
+                      postal_code: this.servicio.alumn.postal
+                    }
+            
+            }
+          }
+        },
+      
+        ).then((result:any) => {
+          if (result.error) {
+            // Show error to your customer (e.g., insufficient funds)
+      
+            this.ngZone.run(()=>  this.cardError = result.error.message);
+            this.loader = false;
+
+            console.log(result.error.message);
+          } else {
+            // The payment has been processed!
+            console.log('Se ha pagado con exito');
+            if (result.paymentIntent.status === 'succeeded') {
+              // Show a success message to your customer
+              // There's a risk of the customer closing the window before callback
+              // execution. Set up a webhook or plugin to listen for the
+              // payment_intent.succeeded event that handles any business critical
+              // post-payment actions.
+      
+      
+              if(data.ok == true)
+               this.servicio.charge().subscribe(data => {
+                this.loader = false;
+
+                Swal.fire({
+                  icon: 'success',
+                  title: 'El teu usuari ha sigut registrat, a continuació rebràs un correu electrònic amb el resguard de la matrícula.',
+                  showConfirmButton: true,
+                  confirmButtonText: `D'acord`
+                }).then(() => {
+                  window.location.href = 'https://ampaiesjaumeprimer.es';
+                });
+      
+             }) 
+      
+            }
+          }
+        });
+            
+          
+        });
+
+        } else {
+          this.loader = false;
+
+          console.log('Ja ets membre de lampa');
+          Swal.fire({
+            icon: 'error',
+            title: `Ja ets membre de l'AMPA aquest any`,
+            showConfirmButton: true,
+            confirmButtonText: `D'acord`
+          })
+
+        }
+
+    },error => {
+      this.loader = false;
+
+      console.log('Ja ets membre de lampa');
+      Swal.fire({
+        icon: 'error',
+        title: `Ja ets membre de l'AMPA aquest any`,
+        showConfirmButton: true,
+        confirmButtonText: `D'acord`
+      })
+    }
+    );
+
+   
+    /* const { token, error } = await stripe.createToken(this.card);
     if(token){
     try {
       const respone = await this.servicio.charge(this.servicio.cash, token.id);
@@ -86,11 +190,10 @@ if(error){
       }).then(() => {
         window.location.href = 'https://ampaiesjaumeprimer.es';
       });
-    } 
+    }
     
-  }
+  } */
 
-  this.loader = false;
 
   }
 

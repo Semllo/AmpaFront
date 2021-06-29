@@ -25,21 +25,37 @@ export class AlumService {
   public GetForm() {
     //console.log(formData);
 
+    console.log('Germans?');
    return this.http.post<any>(`${ base_url }/usuarios/germans`, this.alumn);  
 
 
   }
 
-  charge( cantidad:number, tokenID:String ){
+  public GetUsuari() {
+    //console.log(formData);
+    console.log('Ja ets membre de lampa?');
+   return this.http.post<any>(`${ base_url }/usuarios/usuari`, this.alumn);  
+
+
+  }
+
+  charge( ){
 
     this.alumn.images = this.imageUrl;
 
-    console.log(this.alumn);
+    console.log('Guardando el usuario');
     return this.http.post<any>(`${ base_url }/usuarios/pagar`, {
-      cantidad: cantidad,
-      stripeToken: tokenID,
       usuario: this.alumn 
-    } ).toPromise();
+    } );
+
+  }
+
+  PrePayment (cantidad:number ) {
+
+    return this.http.post<any>(`${ base_url }/usuarios/secret`, {
+      cantidad: cantidad,
+      usuario: this.alumn 
+    } );
 
   }
 
