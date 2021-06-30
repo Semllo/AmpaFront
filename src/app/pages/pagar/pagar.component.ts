@@ -199,16 +199,18 @@ if(error){
 
 
   cambio(dniGerma: string): void {
-    
-      if (this.Germans == 1 && this.niaGerma && this.dniGerma && dniGerma.length > 7 && dniGerma.length < 10 &&  this.servicio.alumn.nia != this.niaGerma && this.servicio.alumn.dni != this.dniGerma) {
+      this.servicio.cash = 20;
+      console.log( `Germans: ${this.Germans} niaGErma: ${this.niaGerma} dniGerma: ${this.dniGerma}` );
+      console.log(this.Germans == 1 && this.niaGerma && this.dniGerma && dniGerma.length > 7 && dniGerma.length < 10 &&  this.servicio.alumn.nia != this.niaGerma && this.servicio.alumn.dni != this.dniGerma);
+      if (this.Germans == 1 && this.niaGerma && this.dniGerma && dniGerma.length > 7 && this.servicio.alumn.nia != this.niaGerma && this.servicio.alumn.dni != this.dniGerma) {
       this.servicio.alumn.dniGerma = this.dniGerma;
       this.servicio.alumn.niaGerma = this.niaGerma;
       this.servicio.alumn.germans = this.Germans;
 
-      console.log(this.Germans);
-      console.log(this.niaGerma);
-      console.log(this.dniGerma.length);
-      console.log(this.servicio.alumn);
+      //console.log(this.Germans);
+      //console.log(this.niaGerma);
+      //console.log(this.dniGerma);
+      console.log(this.servicio.alumn.dniGerma);
       this.servicio.GetForm().subscribe(data => {
         console.log(data);
         if(data.ok == true){

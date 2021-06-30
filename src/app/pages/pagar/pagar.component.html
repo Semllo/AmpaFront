@@ -55,7 +55,7 @@
                 <div class="col-sm animate__animated animate__fadeInRight" *ngIf="niaGerma.length > 5">
                     <mat-form-field appearance="fill" class="input">
                         <mat-label>DNI del germà</mat-label>
-                        <input (ngModelChange)="cambio(dniGerma)" [(ngModel)]="dniGerma" matInput>
+                        <input [(ngModel)]="dniGerma" (ngModelChange)="cambio(dniGerma)" matInput>
                     </mat-form-field>
                 </div>
 
